@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         
-        Vector3 position = this.transform.position;
+        Vector3 position = transform.position;
 
         if (Input.GetKey(KeyCode.A))
         {
@@ -25,7 +25,19 @@ public class Player : MonoBehaviour
         {
             position.x = position.x + velocidade * Time.deltaTime;
         }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            position.z = position.z - velocidade * Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            position.z = position.z + velocidade * Time.deltaTime;
+        }
         
+        transform.position = position;
     }
+     
     
 }

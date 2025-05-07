@@ -5,7 +5,7 @@ public class Dano : MonoBehaviour
 {
     private Personagem personagem;
 
-    private void OnCollisionEnter2D(Collision2D colisao)
+    private void OnCollisionEnter(Collision colisao)
     {
 
         if (colisao.gameObject.CompareTag("Inimigo"))

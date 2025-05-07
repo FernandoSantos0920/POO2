@@ -1,10 +1,11 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 
 
+public class Carro : MonoBehaviour
 
-public class Carro
 { 
    private string nome;
    private string cor;
@@ -58,19 +59,4 @@ public class Carro
    }
    
    
-}using UnityEngine;
-
-public class Carro : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
