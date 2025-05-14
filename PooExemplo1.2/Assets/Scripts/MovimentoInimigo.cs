@@ -6,6 +6,7 @@ public class MovimentoInimigo : MonoBehaviour
 {
     
     private GameObject jogador;
+    public GameObject ataqueObject;
     
     private Rigidbody rb;
     private float velocidade;
@@ -15,6 +16,9 @@ public class MovimentoInimigo : MonoBehaviour
     private bool naVisao = false;
 
     private SphereCollider sphere;
+    
+    
+    public float distanciaMinima = 1.5f;
     
     void Start()
     {
@@ -31,12 +35,23 @@ public class MovimentoInimigo : MonoBehaviour
     void Update()
     {
         sphere.radius = raioDeVisao;
-        if (naVisao = true)
+
+        if (Vector3.Distance(transform.position, jogador.transform.position) > distanciaMinima)
         {
-            transform.LookAt(jogador.transform.position);
-            transform.position = Vector3.MoveTowards(transform.position, jogador.transform.position, velocidade * Time.deltaTime);
-           
+             if (naVisao = true)
+                    {
+                        transform.LookAt(jogador.transform.position);
+                        transform.position = Vector3.MoveTowards(transform.position, jogador.transform.position, velocidade * Time.deltaTime);
+                       
+                    }
+                    ataqueObject.SetActive(false);
         }
+        else
+        {
+            ataqueObject.SetActive(true);
+        }
+
+        Debug.DrawLine(transform.position, jogador.transform.position, Color.red);
         
         
     }
