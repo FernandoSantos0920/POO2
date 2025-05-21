@@ -25,29 +25,30 @@ public class Player : MonoBehaviour
         
         
         Vector3 position = transform.position;
-
+        animator.SetBool("Andando", false);
+       
         if (Input.GetKey(KeyCode.A))
         {
             position.x = position.x - velocidade * Time.deltaTime;
-           
+            animator.SetBool("Andando", true);
         }
         
         if (Input.GetKey(KeyCode.D))
         {
             position.x = position.x + velocidade * Time.deltaTime;
-            animator.SetBool("Movendo", true);
+            animator.SetBool("Andando", true);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
             position.z = position.z - velocidade * Time.deltaTime;
-           
+            animator.SetBool("Andando", true);
         }
 
         if (Input.GetKey(KeyCode.W))
         {
             position.z = position.z + velocidade * Time.deltaTime;
-          
+            animator.SetBool("Andando", true);
         }
         
         transform.position = position;
