@@ -124,7 +124,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 308a04aee8a3b774b86d4b0813f257e6, type: 3}
   m_PrefabInstance: {fileID: 1737505420}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &311731488
+--- !u!4 &311731490 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 308a04aee8a3b774b86d4b0813f257e6, type: 3}
+  m_PrefabInstance: {fileID: 1737505420}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &311731491
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -146,11 +151,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!4 &311731490 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 308a04aee8a3b774b86d4b0813f257e6, type: 3}
-  m_PrefabInstance: {fileID: 1737505420}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +467,8 @@ GameObject:
   - component: {fileID: 618661688}
   - component: {fileID: 618661687}
   - component: {fileID: 618661686}
-  - component: {fileID: 618661692}
+  - component: {fileID: 618661693}
+  - component: {fileID: 618661694}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Player
@@ -514,7 +515,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea8f623e69a9734083420985c775fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidade: 10
+  velocidade: 100
+  andando: 0
 --- !u!65 &618661688
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -605,28 +607,39 @@ Transform:
   - {fileID: 311731490}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &618661692
-Animator:
-  serializedVersion: 7
+--- !u!114 &618661693
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 618661685}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: efb35ebcc3c8d994395fd2eb3006b770, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b20d4b8fa6bd174a8622f00d58d7d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 311731491}
+  animation_velocity: 1
+--- !u!114 &618661694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618661685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72438718d478b7a469cfd5c8e39b879c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nome: 
+  energia: 0
+  forca_ataque: 0
+  forca_do_pulo: 0
+  velocidade: 0
+  numero_de_pes: 0
+  numero_de_maos: 0
 --- !u!1 &654425433
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,7 +1003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 308a04aee8a3b774b86d4b0813f257e6, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3006199462227732396, guid: 308a04aee8a3b774b86d4b0813f257e6, type: 3}
       propertyPath: m_IsActive
@@ -1002,7 +1015,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 308a04aee8a3b774b86d4b0813f257e6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 311731488}
+      addedObject: {fileID: 311731491}
   m_SourcePrefab: {fileID: 100100000, guid: 308a04aee8a3b774b86d4b0813f257e6, type: 3}
 --- !u!1 &2074414290
 GameObject:
