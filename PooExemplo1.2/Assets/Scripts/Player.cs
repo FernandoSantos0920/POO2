@@ -2,57 +2,93 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private Rigidbody rb;
-
-    public float velocidade = 10f;
-
-    private Animator animator;
+    private Rigidbody _rigidbody; 
+    
+    private float velocidade;
 
     public bool andando = false;
-    
-    
-    void Start()
-   
-    {
-        rb = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
+     void Start()
+     {
+         velocidade = gameObject.GetComponent<Personagem>().VelocidadeDoPersonagem();
+        _rigidbody = GetComponent<Rigidbody>();
     }
-
-    
     void Update()
     {
+        Vector3 posicao = transform.position;
 
         andando = false;
         
-        Vector3 position = transform.position;
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+        {
+            posicao.x = posicao.x + velocidade * Time.deltaTime;
+            posicao.z = posicao.z + velocidade * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(0, -135, 0);
+            andando =  true;
+        }
+        else
+            
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+        {
+            posicao.x = posicao.x + velocidade * Time.deltaTime;
+            posicao.z = posicao.z - velocidade * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(0, -45, 0);
+            andando =  true;
+        }
+        else    
         
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
+        {
+            posicao.x = posicao.x - velocidade * Time.deltaTime;
+            posicao.z = posicao.z - velocidade * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(0, 45, 0);
+            andando =  true;
+        }
+        else   
+            
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        {
+            posicao.x = posicao.x - velocidade * Time.deltaTime;
+            posicao.z = posicao.z + velocidade * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(0, 135, 0);
+            andando =  true;
+        }
+        else   
+            
        
         if (Input.GetKey(KeyCode.A))
         {
-            position.x = position.x - velocidade * Time.deltaTime;
-            animator.SetBool("Andando", andando = true);
+            posicao.x = posicao.x - velocidade * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(0, 90, 0);
+            andando =  true;
         }
-        
+        else
+      
         if (Input.GetKey(KeyCode.D))
         {
-            position.x = position.x + velocidade * Time.deltaTime;
-            animator.SetBool("Andando", andando = true);
+            posicao.x = posicao.x + velocidade * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(0, -90, 0);
+            andando =  true;
         }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            position.z = position.z - velocidade * Time.deltaTime;
-            animator.SetBool("Andando", andando = true);
-        }
-
+        else
+       
         if (Input.GetKey(KeyCode.W))
         {
-            position.z = position.z + velocidade * Time.deltaTime;
-            animator.SetBool("Andando", andando = true);
+            posicao.z = posicao.z + velocidade * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            andando =  true;
+        }
+        else
+       
+        if (Input.GetKey(KeyCode.S))
+        {
+            posicao.z = posicao.z - velocidade * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            andando =  true;
         }
         
-        transform.position = position;
+        transform.position = posicao;
+        
+        
+
     }
-     
-    
 }
