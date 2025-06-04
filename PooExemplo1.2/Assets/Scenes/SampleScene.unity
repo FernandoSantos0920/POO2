@@ -469,6 +469,7 @@ GameObject:
   - component: {fileID: 618661692}
   - component: {fileID: 618661693}
   - component: {fileID: 618661694}
+  - component: {fileID: 618661695}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -619,7 +620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 311731491}
-  animation_velocity: 1
+  velocidadeDaAnimacao: 1
 --- !u!114 &618661694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,12 +634,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nome: 
-  energia: 0
-  forca_ataque: 0
+  energia: 10
+  forca_ataque: 5
   forca_do_pulo: 0
   velocidade: 5
   numero_de_pes: 0
   numero_de_maos: 0
+--- !u!114 &618661695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618661685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 920110e2ff5737a4e89221e81432ab69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  personagem: {fileID: 618661694}
 --- !u!1 &654425433
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,6 +763,8 @@ GameObject:
   - component: {fileID: 836161967}
   - component: {fileID: 836161974}
   - component: {fileID: 836161975}
+  - component: {fileID: 836161976}
+  - component: {fileID: 836161977}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Inimigo
@@ -824,12 +840,12 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 0.4865992
+  m_Radius: 0.71886325
   m_Height: 2.522357
   m_Direction: 1
-  m_Center: {x: -0.013400793, y: 0.2611785, z: 0}
+  m_Center: {x: -0.013400793, y: 0.2611785, z: 0.23226406}
 --- !u!23 &836161971
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -948,6 +964,41 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!65 &836161976
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836161966}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.84543556, y: 2.0627384, z: 0.7063086}
+  m_Center: {x: 0.01462397, y: 0.084878445, z: 0.07429576}
+--- !u!114 &836161977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836161966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3a9ed2ac768014283a412b8e833600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1329203163}
+  velocidadeDaAnimacao: 1
 --- !u!1001 &965830840
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1310,7 +1361,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2111446211}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

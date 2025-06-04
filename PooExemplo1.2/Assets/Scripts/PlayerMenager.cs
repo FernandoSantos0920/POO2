@@ -1,26 +1,35 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerMenager : MonoBehaviour
 
 {
-    private Player player;
     public Animator animator;
-    public float animation_velocity = 1f;
+    private Player movimentoPlayer;
+    public float velocidadeDaAnimacao = 1;
     
-    
+    private Personagem personagem;
     
     
     void Start()
     {
-
-        player = GetComponent<Player>();
-        
+        movimentoPlayer = GetComponent<Player>();
+        personagem = GetComponent<Personagem>();
     }
-
-   
     void Update()
     {
-        animator.SetBool("Andando", player.andando);
-        animator.speed = animation_velocity;
+        animator.SetBool("Andando", movimentoPlayer.andando);
+        animator.speed = velocidadeDaAnimacao;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetTrigger("Ataque");  
+        }
+
+        if (personagem.EnergiaDoPersonagem() <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+           
+        }
+
     }
 }

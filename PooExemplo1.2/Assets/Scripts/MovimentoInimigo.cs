@@ -4,9 +4,8 @@ using UnityEngine;
 public class MovimentoInimigo : MonoBehaviour
 
 {
-    
     public GameObject ataqueObject;
-    private GameObject jogador;
+    private GameObject _player;
     
     public bool andando = false;
     public bool ataque = false;
@@ -14,55 +13,51 @@ public class MovimentoInimigo : MonoBehaviour
     public float velocidadeDoAtaque = 1;
     private float ataqueTime = 0;
     
-    private Rigidbody rb;
+    private Rigidbody _rigidbody;
     private float velocidade;
 
     public float raioDeVisao = 10;
     private bool naVisao = false;
     
-    private SphereCollider sphere;
+    private SphereCollider _sphereCollider;
 
     public float distanciaMinima = 1.5f;
-
     
     void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody>();
+        _rigidbody = gameObject.GetComponent<Rigidbody>();
         velocidade = gameObject.GetComponent<Inimigo>().VelocidadeDoPersonagem();
-        sphere = gameObject.GetComponent<SphereCollider>();
-      
+        _sphereCollider = gameObject.GetComponent<SphereCollider>();
         
-        
-        jogador = GameObject.FindWithTag("Player");
+        _player = GameObject.FindWithTag("Player");
 
         ataqueTime = 0;
     }
 
-    
+ 
     void Update()
     {
-        andando = false;
-        ataque = false;
+      andando = false;
+      ataque = false;
         
-        ataqueTime += Time.unscaledDeltaTime;
-        Debug.Log( ataqueTime );
-        
-        
-        
-        sphere.radius = raioDeVisao;
+      ataqueTime += Time.unscaledDeltaTime;
+      Debug.Log( ataqueTime );
+      
+        _sphereCollider.radius = raioDeVisao;
 
-        if (Vector3.Distance(transform.position, jogador.transform.position) > distanciaMinima)
+        if (Vector3.Distance(transform.position, _player.transform.position) > distanciaMinima)
         {
-             if (naVisao == true)
-                    {
-                        transform.LookAt(jogador.transform.position);
-                        transform.position = Vector3.MoveTowards(transform.position, jogador.transform.position, velocidade * Time.deltaTime);
-                       
-                        
-                        
-                        andando = true;
-                    }
-                    ataqueObject.SetActive(false);
+            if (naVisao == true)
+            {
+                transform.LookAt(_player.transform.position);
+                transform.position = Vector3.MoveTowards(transform.position,
+                    _player.transform.position,
+                    velocidade * Time.deltaTime);
+
+                andando = true;
+            }
+            ataqueObject.SetActive(false);
+           
         }
         else
         {
@@ -74,19 +69,16 @@ public class MovimentoInimigo : MonoBehaviour
                 ataqueTime = 0;
             }
         }
-        Debug.DrawLine(transform.position, jogador.transform.position, Color.red);
+
+        Debug.DrawLine(transform.position, _player.transform.position, Color.red);
         
     }
-
     void OnTriggerStay(Collider colisao)
     {
         if (colisao.gameObject.CompareTag("Player"))
         {
             naVisao = true;
         }
-        
-        
-        
         
     }
 
@@ -97,6 +89,6 @@ public class MovimentoInimigo : MonoBehaviour
             naVisao = false;
         }
     }
-    
-    
 }
+    
+  
